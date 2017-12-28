@@ -1,0 +1,34 @@
+﻿@model Model.Domain.Album
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="jumbotron"></div>
+<h2>@Model.Name</h2>
+<p>@Model.Description</p>
+
+@if(Model.Photo != null)
+{
+    <div class="row">
+        @foreach (var m in Model.Photo)
+        {
+
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="~/Uploads/@m.PhotoLink" alt="@m.PhotoLink">
+                </div>
+            </div>
+
+        }
+    </div>
+}
+
+<div class="clearfix"></div>
+
+<div class="well">
+    @Html.Partial("_Create", new NetProject.Models.PhotoViewModel { AlbumId = Model.Id })
+</div>
+
+
+
